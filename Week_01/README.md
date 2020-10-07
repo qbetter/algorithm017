@@ -38,7 +38,10 @@ ps: 面试四件套：
 队列是先进先出：
 C++ 中对和栈的常用函数 1，C++中队列queue的常用函数： 显示队顶元素：queue.front() 出队：queue.pop(); 进队：queue.push(val);
 2，栈的常用函数 显示栈顶元素：stack.top() 出栈：stack.pop() 进栈：stack.push(val)
-3，双端队列：简单理解：两端可以进出的 Queue. Deque - double ended queue. 插入和删除都是 O(1) 操
+3，双端队列：简单理解：两端可以进出的 Queue. Deque - double ended queue. 插入和删除都是 O(1)
+双端队列的操作：deque.front()、deque.begin():显示头部值；deque.back():显示尾部值；deque.end():显示头部值后面的；
+deque.push_front(x):从前面插入x值；deque.pop_front(x):将前面的值去除掉；deque.push_back(x):从后面插入x值；deque.pop_back(x):将后面的值去除掉；
+
 4,Priority Queue.  插入操作：O(1); 取出操作：O(logN) - 按照元素的优先级取出; 底层具体实现的数据结构较为多样和复杂：
 5，Python的优先队列import heapq；双端队列：from collections import deque
 
@@ -48,6 +51,21 @@ code:
 数组链表跳表
 283. 移动零:https://leetcode-cn.com/problems/move-zeroes/
 
+两数之和：https://leetcode-cn.com/problems/two-sum/
+使用一个map每次记录当前数据的目标值的差值，并且在遍历的过程中遇到存在map中的数据就结束。
+		```python
+        diff_dict = {}
+        output = []
+        for i in range(len(nums)):
+            if nums[i] in diff_dict:
+                output.append(diff_dict[nums[i]])
+                output.append(i)
+                break
+            diff_v = target - nums[i]
+            diff_dict[diff_v] = i
+        return output
+        ```
+
 15. 三数之和:https://leetcode-cn.com/problems/3sum/submissions/
 
 70. 爬楼梯:https://leetcode-cn.com/problems/climbing-stairs/?utm_source=LCUS&utm_medium=ip_redirect_q_uns&utm_campaign=transfer2china
@@ -55,8 +73,34 @@ code:
 11. 盛最多水的容器:https://leetcode-cn.com/problems/container-with-most-water/
 
 206. 反转链表:https://leetcode-cn.com/problems/reverse-linked-list/
+反转时指针变换的顺序。核心代码：
+		```cpp	
+		ListNode* cur = head;
+        while(cur){
+            temp=cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = temp; 
+        }
+        ```
 
 24. 两两交换链表中的节点:https://leetcode-cn.com/problems/swap-nodes-in-pairs/
+
+环形链表:https://leetcode-cn.com/problems/linked-list-cycle/
+核心是快慢指针，快的每次走两步，慢的每次走一步，代码如下
+		```cpp
+        ListNode* fast = head,*slow = head;
+        bool cycle_flag = false;
+        while(fast!=NULL && fast->next!=NULL){
+            fast = fast->next->next;
+            slow = slow->next;
+            if(fast == slow){
+                cycle_flag = true;
+                break;
+            }
+        }
+        ```
+
 
 栈队列
 有效的括号：https://leetcode-cn.com/problems/valid-parentheses/
@@ -67,5 +111,5 @@ code:
 
 合并两个有序链表：https://leetcode-cn.com/problems/merge-two-sorted-lists/
 
-
+滑动窗口最大值:https://leetcode-cn.com/problems/sliding-window-maximum/submissions/
 

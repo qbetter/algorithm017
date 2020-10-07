@@ -1,9 +1,15 @@
 第二周：哈希表、映射、集合；树、二叉树、二叉搜索树；堆和图
 学习笔记
 
-
 一，哈希表、映射、集合
 哈希表（Hash table）， 也叫散列表，是根据关键码值（Key value）而直接进行访问的数据结构。又叫散列表、散列函数。通过哈希函数将数据映射到某个位置，查找时可以快速查找，若碰撞时需要消除碰撞。java和C++是map，Python是dict。
+C++ map的使用：unordered_map:
+遍历：
+for ( auto it = mymap.begin(); it != mymap.end(); ++it )
+    cout << " " << it->first << ":" << it->second;
+插入：map.insert(value);map[1]=value;
+删除：map.erase(value);map.erase(map.begin());
+查找：if(map.find ("coffee")!=map.end()) print('没找到');
 
 二，树、二叉树、二叉搜索树
 熟知二叉树的前中后遍历。
@@ -36,6 +42,8 @@ PS:
 
 code:
 有效的字母异位词:https://leetcode-cn.com/problems/valid-anagram/
+
+字母异位词分组:https://leetcode-cn.com/problems/group-anagrams/solution/zi-mu-yi-wei-ci-fen-zu-by-leetcode/
 
 94. 二叉树的中序遍历:https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
 
