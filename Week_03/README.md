@@ -13,7 +13,8 @@ code：
 爬楼梯：https://leetcode-cn.com/problems/climbing-stairs/
 
 翻转二叉树：https://leetcode-cn.com/problems/invert-binary-tree/description/
-		```cpp
+翻转二叉树
+        ```cpp
         //使用queue来辅助，迭代的翻转二叉树
         if(!root) return root;
         queue<TreeNode*> queue_node;
@@ -36,7 +37,8 @@ code：
         ```
 
 括号生成:https://leetcode-cn.com/problems/generate-parentheses/submissions/
-	```cpp  在生成过程中的剪枝：1，左括号随时可以生成，但是需要其生成的数量小于n；2，右括号在左括号后，且个数一定要小于左括号。
+    在生成过程中的剪枝：1，左括号随时可以生成，但是需要其生成的数量小于n；2，右括号在左括号后，且个数一定要小于左括号。
+	```cpp  
     void generate_fun(int left,int right,int n,string s,vector<string>& output){
         if(left==n && right==n){
             output.push_back(s);
@@ -66,8 +68,7 @@ code：
 	```
 
 二叉树最大深度：https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/104-er-cha-shu-de-zui-da-shen-du-ti-jie-by-free_st/
-
-	```cpp
+    ```cpp
 	int maxDepth(TreeNode* root) {
         if(!root) return 0;
         int left_depth = maxDepth(root->left);
@@ -117,7 +118,8 @@ https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/er-cha-sh
     ```
 
 子集：https://leetcode-cn.com/problems/subsets/solution/78zi-ji-by-free_styles/
-	```cpp 使用额外的数组，当前数据加入时递归，以及当前数据不加入时也递归。最后能得到全部的集合
+    使用额外的数组，当前数据加入时递归，以及当前数据不加入时也递归。最后能得到全部的集合
+	```cpp
     vector<int> cut_temp;
     vector<vector<int>> result;
     void dfs_search(int level,int n,vector<int> nums){
