@@ -37,6 +37,7 @@ return root;
 ```
 
 括号生成:https://leetcode-cn.com/problems/generate-parentheses/submissions/
+
 在生成过程中的剪枝：1，左括号随时可以生成，但是需要其生成的数量小于n；2，右括号在左括号后，且个数一定要小于左括号。
 ```cpp  
 void generate_fun(int left,int right,int n,string s,vector<string>& output){
@@ -52,6 +53,7 @@ void generate_fun(int left,int right,int n,string s,vector<string>& output){
 ```
 
 98. 验证二叉搜索树:https://leetcode-cn.com/problems/validate-binary-search-tree/solution/98yan-zheng-er-cha-ping-heng-shu-by-free_styles/
+
 对于每一层在向下传递的时候都要加上边界来判断当前数据的是不是在合适的范围之内。如果遍历左子树，则其左边界不变，右边界为根节点的值；
 如果遍历右子树，则其右边界不变，左边界为根节点的值。这题很容易犯的错是只比较当前根节点对左右子节点是否满足，但是需要其对左右子树都要满足。
 ```cpp 
@@ -68,6 +70,7 @@ bool isValidBST(TreeNode* root) {
 ```
 
 二叉树最大深度：https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/104-er-cha-shu-de-zui-da-shen-du-ti-jie-by-free_st/
+
 ```cpp
 int maxDepth(TreeNode* root) {
 if(!root) return 0;
@@ -96,9 +99,10 @@ int minDepth(TreeNode* root) {
     return 1+min(left_num,right_num);   
 }
 ```
-
+----
 二叉树广度遍历的代码框架,求二叉树的最大、最小深度、最大宽度的题解:
 https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/er-cha-shu-yan-du-bian-li-de-dai-ma-kuang-jia-qiu-/
+----
 
 50. Pow(x, n):https://leetcode-cn.com/problems/powx-n/
 	```cpp
@@ -118,6 +122,7 @@ https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/er-cha-sh
     ```
 
 子集：https://leetcode-cn.com/problems/subsets/solution/78zi-ji-by-free_styles/
+
 使用额外的数组，当前数据加入时递归，以及当前数据不加入时也递归。最后能得到全部的集合
 ```cpp
 vector<int> cut_temp;
@@ -134,6 +139,8 @@ void dfs_search(int level,int n,vector<int> nums){
 }
 ```
 
+
 17. 电话号码的字母组合:https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/submissions/
+
 使用额外的数组，当前数据加入时递归，以及当前数据不加入时也递归。最后能得到全部的集合
 
