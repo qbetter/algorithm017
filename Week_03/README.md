@@ -66,6 +66,7 @@ code：
 	```
 
 二叉树最大深度：https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/104-er-cha-shu-de-zui-da-shen-du-ti-jie-by-free_st/
+
 	```cpp
 	int maxDepth(TreeNode* root) {
         if(!root) return 0;
@@ -76,6 +77,7 @@ code：
 	```
 
 二叉树的最小深度：https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/
+
 	```cpp
     int minDepth(TreeNode* root) {
         if(!root){
