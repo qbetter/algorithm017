@@ -284,3 +284,38 @@ int mySqrt(int x) {
     return result;
 }
 ```
+
+153. 寻找旋转排序数组中的最小值
+```cpp
+int findMin(vector<int>& nums) {
+    int left=0,right=nums.size()-1;
+    while (left<right) {
+        int mid = left+(right-left)/2;
+        if (nums[mid]>nums[right]) {
+            left = mid+1;
+        }
+        else
+            right=mid;
+    }
+    return nums[left];
+}
+```
+
+367. 有效的完全平方数
+```cpp
+bool isPerfectSquare(int num) {
+    int left=1,right=num/2+1;
+    while (left<=right) {
+        int mid = left + (right-left)/2;
+        long long temp = (long long) mid*mid; 
+        if (temp == num) 
+            return true;
+        if (temp > num) 
+            right = mid-1;
+        else
+            left = mid + 1;
+    }
+    return false;
+}
+```
+
