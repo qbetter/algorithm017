@@ -63,7 +63,15 @@ deque.pop_back(x):将后面的值去除掉；\
 
 ### code:
 #### 数组链表跳表
-[283.移动零](https://leetcode-cn.com/problems/move-zeroes/)
+[283.移动零](https://leetcode-cn.com/problems/move-zeroes/)\
+
+```
+给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+输入: [0,1,0,3,12]
+输出: [1,3,12,0,0]
+```
+使用变量记录非0数据下一个位置的下标，遍历nums，遇到非0数据，就交换非零与变量的位置，变量前进。
+
 ```cpp
 void moveZeroes(vector<int>& nums) {
     //使用变量记录非0数据下一个位置的下标，遍历nums，遇到非0数据，就交换非零与变量的位置，变量前进。
@@ -79,6 +87,12 @@ void moveZeroes(vector<int>& nums) {
 ```
 
 [1.两数之和](https://leetcode-cn.com/problems/two-sum/)\
+
+```
+给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
+给定 nums = [2, 7, 11, 15], target = 9
+```
 使用一个map每次记录当前数据的目标值的差值，并且在遍历的过程中遇到存在map中的数据就结束。
 ```python
 diff_dict = {}
@@ -94,6 +108,19 @@ return output
 ```
 
 [15. 三数之和](https://leetcode-cn.com/problems/3sum/submissions/)
+
+```
+给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0？
+请你找出所有满足条件且不重复的三元组。
+注意：答案中不可以包含重复的三元组。
+给定数组 nums = [-1, 0, 1, 2, -1, -4]，
+满足要求的三元组集合为：
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
+```
+
 ```cpp
 vector<vector<int>> threeSum(vector<int>& nums) {
     int first,second,third;
@@ -122,6 +149,15 @@ vector<vector<int>> threeSum(vector<int>& nums) {
 } 
 ```
 [70. 爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)
+
+```
+假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+注意：给定 n 是一个正整数。
+输入： 2
+输出： 2
+```
+
 ```cpp
 int climbStairs(int n) {
     if(n<=3) return n;
@@ -136,6 +172,12 @@ int climbStairs(int n) {
 ```
 
 [11. 盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/)\
+
+```
+给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，
+垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+说明：你不能倾斜容器，且 n 的值至少为 2。
+```
 双指针法，首尾指针head/tail执行首尾；移动的时候首指针往后移动，尾指针往前移动；每次移动较小的那个数值，计算移动之后的容量，更新最大容量值；最后输出容量值.
 ```cpp
 int maxArea(vector<int>& height) {
@@ -156,8 +198,18 @@ int maxArea(vector<int>& height) {
 }
 ```
 [206. 反转链表:](https://leetcode-cn.com/problems/reverse-linked-list/)\
-反转时指针变换的顺序。核心代码：
-```cpp	
+
+```
+反转一个单链表。
+示例:
+输入: 1->2->3->4->5->NULL
+输出: 5->4->3->2->1->NULL
+进阶:
+你可以迭代或递归地反转链表。你能否用两种方法解决这道题？
+```
+反转时指针变换的顺序。
+```cpp  
+//递归
 ListNode* reverseList(ListNode* head) {
     if(!head || !head->next) return head;
     ListNode* cur = reverseList(head->next);
@@ -165,9 +217,27 @@ ListNode* reverseList(ListNode* head) {
     head->next = NULL;
     return cur;
 }
+//迭代
+ListNode* reverseList(ListNode* head) {
+    ListNode* cur=head;
+    ListNode* pre=NULL;
+    while(cur){
+        ListNode* temp = cur->next;
+        cur->next = pre;
+        pre = cur;
+        cur = temp;
+    }
+    return pre;
+}
 ```
 
 [24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
+
+```
+给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
+你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+```
+
 ```cpp
 ListNode* swapPairs(ListNode* head) {
     if(!head || !head->next) return head;
@@ -190,6 +260,13 @@ ListNode* swapPairs(ListNode* head) {
 ```
 
 [141.环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)\
+
+```
+给定一个链表，判断链表中是否有环。
+如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。为了表示给定链表中的环，我们使用整数 pos
+来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。
+如果链表中存在环，则返回 true 。 否则，返回 false 。
+```
 核心是快慢指针，快的每次走两步，慢的每次走一步，代码如下:
 ```cpp
 bool hasCycle(ListNode *head) {
@@ -209,9 +286,19 @@ bool hasCycle(ListNode *head) {
     
 }
 ```
-
+有一个进阶的题目是找到循环的入口。思路也是快慢指针，前面与上面的思路一样，再结束之后，将快指针定位到头部，然后快慢指针每次前进一步，相遇时的位置就是入口位置。
 #### 栈队列
 [20.有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)
+```
+给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+有效字符串需满足：
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+注意空字符串可被认为是有效字符串。
+输入: "()[]{}"
+输出: true
+```
+
 ```cpp
 bool isValid(string s) {
     map<char,char> bracket_dt;
@@ -242,7 +329,11 @@ bool isValid(string s) {
 [155.最小栈](https://leetcode-cn.com/problems/min-stack/)：
 
 
-[26. 删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/submissions//)：\
+[26. 删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/submissions//)：
+```
+给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+```
 s使用数组在处理数据;遍历j指向当前非重复的位置，遍历数组，遇到与前面不同的数据就赋值到j的位置，j++；最后返回j. 
 ```
 int removeDuplicates(vector<int>& nums) {
@@ -261,8 +352,14 @@ int removeDuplicates(vector<int>& nums) {
 }
 ```
 
-
 [21.合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)：
+
+```
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+输入：1->2->4, 1->3->4
+输出：1->1->2->3->4->4
+```
+
 ```cpp
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
     ListNode* l3=new ListNode();
@@ -287,6 +384,27 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
 ```
 
 [239.滑动窗口最大值](https://leetcode-cn.com/problems/sliding-window-maximum/submissions/):
+
+```
+给定一个数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动
+窗口内的 k 个数字。滑动窗口每次只向右移动一位。
+进阶：
+你能在线性时间复杂度内解决此题吗？
+返回滑动窗口中的最大值。
+输入: nums = [1,3,-1,-3,5,3,6,7], 和 k = 3
+输出: [3,3,5,5,6,7] 
+解释: 
+  滑动窗口的位置                最大值
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+```
+使用双端队列处理滑动窗口的最大值；时间复杂度O(n),空间复杂度O(n)
+
 ```cpp
 vector<int> maxSlidingWindow(vector<int>& nums, int k) {
     deque<int> window;
