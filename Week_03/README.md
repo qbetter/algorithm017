@@ -103,7 +103,7 @@ void generate_fun(int left,int right,int n,string s,vector<string>& output){
         generate_fun(left,right+1,n,s+')',output);
 }
 
-//--迭代的解法
+//--递归的解法2
 //括号有效需要满足的条件是左括号不大于n，且右括号数量小于左括号
 void gene_fun(int left,int right,int n,vector<string>& output,string s) {
     //终止条件
@@ -114,6 +114,7 @@ void gene_fun(int left,int right,int n,vector<string>& output,string s) {
     //当前层处理
     string left_s = s+'(';
     string right_s = s+')';
+    //下层的处理
     if (left < n) 
         gene_fun(left+1,right,n,output,left_s);
     if (left>right)
@@ -127,7 +128,7 @@ vector<string> generateParenthesis(int n) {
 }
 ```
 
-[98. 验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/solution/98yan-zheng-er-cha-ping-heng-shu-by-free_styles/)\
+[98. 验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/solution/98yan-zheng-er-cha-ping-heng-shu-by-free_styles/)
 
 ```
 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
