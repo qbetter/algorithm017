@@ -90,20 +90,8 @@ return root;
 [22.括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
 
 在生成过程中的剪枝：1，左括号随时可以生成，但是需要其生成的数量小于n；2，右括号在左括号后，且个数一定要小于左括号。
-```cpp  
-//递归的解法
-void generate_fun(int left,int right,int n,string s,vector<string>& output){
-    if(left==n && right==n){
-        output.push_back(s);
-        return;
-    }
-    if(left<=n)
-        generate_fun(left+1,right,n,s+'(',output);
-    if(left>right)
-        generate_fun(left,right+1,n,s+')',output);
-}
-
-//--递归的解法2
+```cpp
+//--递归的解法
 //括号有效需要满足的条件是左括号不大于n，且右括号数量小于左括号
 void gene_fun(int left,int right,int n,vector<string>& output,string s) {
     //终止条件
@@ -159,6 +147,11 @@ bool isValidBST(TreeNode* root) {
 ```
 
 [104.二叉树最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/solution/104-er-cha-shu-de-zui-da-shen-du-ti-jie-by-free_st/)：
+```
+给定一个二叉树，找出其最大深度。
+二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
+说明: 叶子节点是指没有子节点的节点。
+```
 迭代的解法：广度优先遍历；申请一个队列；每次进队的时候就把该层的所有元素进入队列中，并把深度加1；出队的时候把队列中全部元素都出队列，并将出队时数据的子树加入到队列中
 ```cpp
 //递归解法
