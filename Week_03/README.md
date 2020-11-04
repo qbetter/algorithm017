@@ -87,7 +87,7 @@ while(!queue_node.empty()){
 return root;
 ```
 
-[括号生成](https://leetcode-cn.com/problems/generate-parentheses/submissions/)
+[22.括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
 
 在生成过程中的剪枝：1，左括号随时可以生成，但是需要其生成的数量小于n；2，右括号在左括号后，且个数一定要小于左括号。
 ```cpp  
