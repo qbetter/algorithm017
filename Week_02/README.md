@@ -6,12 +6,13 @@ C++ map的使用：unordered_map:\
 遍历：
 
 ```
+unordered_map<char,int> mymap;
 for ( auto it = mymap.begin(); it != mymap.end(); ++it )
     cout << " " << it->first << ":" << it->second;
-插入：map.insert(value);map[1]=value;
-删除：map.erase(value);map.erase(map.begin());
+插入：map.insert({'A',65});map['a']=97;pair<char,int> c ('d',100); mymap.insert(c);mymap.insert(pair<char,int>('f',102));
+删除：erase通过key删除 map.erase('a');map.erase(map.begin());
 查找：if(map.find ("coffee")!=map.end())
-            print('没找到');
+         print('没找到');
 ```
 
 ### 二，树、二叉树、二叉搜索树
