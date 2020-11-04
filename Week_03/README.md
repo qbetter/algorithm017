@@ -189,7 +189,7 @@ int maxDepth(TreeNode* root) {
 
 ```
 
-[二叉树的最小深度](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
+[111.二叉树的最小深度](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
 
 ```
 给定一个二叉树，找出其最小深度。
@@ -276,9 +276,12 @@ int minDepth(TreeNode* root) {
 使用分治的方式，使得复杂度降低到O(logn)。
 ```cpp
 double pow(double x,long long level){
+    //退出条件
     if(level==0)
         return 1;
+    //下层的处理
     double part_sum = pow(x,level/2);
+    //当前层的处理
     part_sum = part_sum*part_sum;
     if(level%2)
         part_sum *=x;
